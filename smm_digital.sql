@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2026 a las 15:20:51
+-- Tiempo de generación: 09-10-2026 a las 18:07:58
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `smm_digital`
+-- Base de datos: `smm_digital_v2`
 --
 
 -- --------------------------------------------------------
@@ -116,8 +116,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
 (3, '0001_01_01_000002_create_jobs_table', 1),
-(4, '2026_09_27_015229_create_solicitudes_table', 2),
-(5, '2026_09_27_020956_add_role_to_users_table', 3);
+(4, '2026_09_27_015229_create_solicitudes_table', 1),
+(5, '2026_09_27_020956_add_role_to_users_table', 1),
+(6, '2026_09_27_171938_add_multiple_archivos_to_solicitudes_table', 2);
 
 -- --------------------------------------------------------
 
@@ -151,7 +152,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('Rv6c9dvrNiMz4GypOXSfpBR9DvJNMXsgm013HXfH', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:157.0) Gecko/20100101 Firefox/157.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoieHNTbXBFZlBtTzZLNGhmTlBKZUwwSkRub0FIdzkzdE5tbk5lSFZOZCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6MzY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9ub3RpZmljYWNpb25lcyI7czo1OiJyb3V0ZSI7czoyMDoibm90aWZpY2FjaW9uZXMuaW5kZXgiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1790514122);
+('L9vrt2MU7EeN9HiMGVpEW8SQ5xleoxZNDyLiqbCA', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:158.0) Gecko/20100101 Firefox/158.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiNHo2cUJsSkI1M0MxME5wV2RyTXViZWJTV29XazBObVlqTUhsQWVJZCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9wYW5lbC1hbmFsaXN0YXMiO3M6NToicm91dGUiO3M6MTQ6ImFuYWxpc3RhLmluZGV4Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mzt9', 1791470962),
+('VI1ymZYxo0CIuHYxyntZv1vnx7Ajo0UaCLpUJB58', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:158.0) Gecko/20100101 Firefox/158.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTm40cENmT1Bkb1VJd0gxT2lneTRRd3lwUnd6ZE1YNktTN2ZEZExHZSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6Mjp7czozOiJ1cmwiO3M6OTY6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMS9kb2N1bWVudG9zL2RvY3VtZW50b3MvYm9sZXRhcy9VWVhZeXRsbjd3UnVaU0VvelZOWThSWjd6bDVOUnRwbE1tczJlV3JELnBuZyI7czo1OiJyb3V0ZSI7czoxNToiZG9jdW1lbnRvcy5zaG93Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mzt9', 1791560065);
 
 -- --------------------------------------------------------
 
@@ -168,8 +170,8 @@ CREATE TABLE `solicitudes` (
   `egresos_mensuales` decimal(12,2) NOT NULL,
   `carga_familiar` int(11) NOT NULL,
   `antiguedad_laboral` varchar(255) NOT NULL,
-  `dni_archivo` varchar(255) DEFAULT NULL,
-  `boleta_archivo` varchar(255) DEFAULT NULL,
+  `dni_archivos` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`dni_archivos`)),
+  `boleta_archivos` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`boleta_archivos`)),
   `ratio_deuda_ingreso` decimal(5,2) DEFAULT NULL,
   `calificacion` varchar(255) DEFAULT NULL,
   `estado` varchar(255) NOT NULL DEFAULT 'pendiente',
@@ -181,9 +183,20 @@ CREATE TABLE `solicitudes` (
 -- Volcado de datos para la tabla `solicitudes`
 --
 
-INSERT INTO `solicitudes` (`id`, `user_id`, `monto_solicitado`, `plazo_meses`, `ingreso_mensual`, `egresos_mensuales`, `carga_familiar`, `antiguedad_laboral`, `dni_archivo`, `boleta_archivo`, `ratio_deuda_ingreso`, `calificacion`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 1, 15000.00, 24, 2500.00, 1200.00, 1, '1 a 3 años', 'documentos/dni/pqltTe4pquHEdCKCZen8iu9fYhC0naNetjQ49p6h.png', 'documentos/boletas/Cr9yuwdHIn8AlRwyQqnBbS9zoF21IOuOZ6vCdqVP.png', 77.69, 'Rechazado', 'pendiente', '2026-09-27 06:58:15', '2026-09-27 06:58:15'),
-(2, 1, 20000.00, 12, 2000.00, 1000.00, 2, '1 a 3 años', 'documentos/dni/IBxGnnsv8pkuWyVptfgaogV0TkVFY6qQBh0NMjTI.png', 'documentos/boletas/CAuJXfiZEUs3z7ZL8Hh1rV12NJ2fU2VAeQfkTW9V.png', 141.25, 'Rechazado', 'pendiente', '2026-09-27 18:01:25', '2026-09-27 18:01:25');
+INSERT INTO `solicitudes` (`id`, `user_id`, `monto_solicitado`, `plazo_meses`, `ingreso_mensual`, `egresos_mensuales`, `carga_familiar`, `antiguedad_laboral`, `dni_archivos`, `boleta_archivos`, `ratio_deuda_ingreso`, `calificacion`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 1, 15000.00, 8, 1500.00, 700.00, 1, '1 a 3 años', NULL, NULL, 179.81, 'Rechazado', 'rechazado', '2026-09-27 22:06:32', '2026-09-27 22:48:40'),
+(2, 1, 1500.00, 2, 2000.00, 2000.00, 1, 'Menos de 1 año', NULL, NULL, 138.30, 'Rechazado', 'aprobado', '2026-09-27 22:09:14', '2026-09-27 22:49:50'),
+(3, 1, 1500.00, 2000, 1000.00, 1000.00, 1, 'Menos de 1 año', NULL, NULL, 102.14, 'Rechazado', 'aprobado', '2026-09-27 22:12:24', '2026-09-27 22:49:47'),
+(4, 1, 15000.00, 12, 1000.00, 500.00, 1, '1 a 3 años', '[\"documentos\\/dni\\/hV2ohI8vOyaOp7XJugilcL7RhC2Us7cmbYy0v4Xq.png\",\"documentos\\/dni\\/q4NK7ercsxcijGTJSnTHKYxtPDGoB6jigLQ7MvAb.png\",\"documentos\\/dni\\/YRp6B1Jol25bfdBU76iACqKbZHF1IHttAHchoSXF.png\"]', '[\"documentos\\/boletas\\/MbCMgmTB2mjkm62MZkoCLORuygMHKP6b5WaPIOwn.pdf\",\"documentos\\/boletas\\/bgdk3v97cTZATkkzfBKObuchrz426AiI8EzrNGmd.pdf\",\"documentos\\/boletas\\/8NcdvodkWwkN2rxK9jwwWL3C6wRrjhDTSZaywyic.pdf\"]', 186.87, 'Rechazado', 'observado', '2026-09-27 22:31:52', '2026-09-27 22:49:36'),
+(5, 1, 20000.00, 12, 1500.00, 600.00, 0, 'Menos de 1 año', '[\"documentos\\/dni\\/J7bJOE1cN92l3LLXI5VwXRqFFMSsZZQIhq8s2RG8.png\",\"documentos\\/dni\\/I59uJIPK2cz6RHyjoInotPkkoCfZAmPEmWmDiiMM.png\",\"documentos\\/dni\\/kf6XPyxr8HeBNGKptWk6lo0Wi0rOV2K1nPH0MVdF.png\"]', '[\"documentos\\/boletas\\/t4uGznuMpBwZH4KJYhb6l0aSo15KaGXuRNdavVYZ.pdf\",\"documentos\\/boletas\\/8wcCKiKsUh9dbdhBc5cy9v1F2cmW1ke8ZMdULQNh.pdf\"]', 161.67, 'Rechazado', 'pendiente', '2026-09-27 22:38:22', '2026-09-27 22:49:24'),
+(6, 1, 1500.00, 2000, 1000.00, 200.00, 0, 'Menos de 1 año', '[\"documentos\\/dni\\/Fge41Ma3K4lHEyoJD01ZzEaJuBU4r58gNtHoA6bY.pdf\"]', '[\"documentos\\/boletas\\/NHoUW9Fyuz2DNKjGvm9vk1oRSr6HVufNgFf93q3H.pdf\"]', 22.14, 'Preaprobado', 'pendiente', '2026-09-27 22:56:16', '2026-09-27 22:56:16'),
+(7, 1, 3000.00, 8, 1000.00, 200.00, 0, 'Menos de 1 año', '[\"documentos\\/dni\\/VUwamgkx3zx3oDHgzKnGkv22fIi3stL5G1xpt5gK.pdf\"]', '[\"documentos\\/boletas\\/6QOHXgUyNoWekVEL0hle7bo8m2578heMBDigLiE2.pdf\"]', 59.94, 'Rechazado', 'rechazado', '2026-09-27 23:00:55', '2026-09-27 23:00:55'),
+(8, 1, 3000.00, 8, 1000.00, 200.00, 0, 'Menos de 1 año', '[\"documentos\\/dni\\/kXlBR9ocwQSgIgunHtM0K56DIBn50UlXmWlIUsTH.pdf\"]', '[\"documentos\\/boletas\\/A4fCReTxrl6KDCJQXQxyGzvFHZ66eAPfrhm5uMqs.pdf\"]', 59.94, 'Rechazado', 'rechazado', '2026-09-27 23:01:49', '2026-09-27 23:01:49'),
+(9, 1, 5000.00, 12, 3000.00, 300.00, 0, '1 a 3 años', '[\"documentos\\/dni\\/w2PdPBqwd4L21xxuxHyIodAqVkUIVPQyXlsAVtVQ.pdf\"]', '[\"documentos\\/boletas\\/uLfx4lh7hxOBFGGxfDzfOHv9WFzHz2oIeiNZ5Ose.pdf\"]', 25.21, 'Preaprobado', 'aprobado', '2026-09-27 23:03:45', '2026-10-09 20:32:16'),
+(10, 1, 10000.00, 24, 2000.00, 200.00, 1, '1 a 3 años', '[\"documentos\\/dni\\/rY84j9lcAF1DnstFbQVUrcOcoqqJKvkGCwvKOr1Q.pdf\"]', '[\"documentos\\/boletas\\/HOYoox2KlXB9nmQogVf1r1E68nvoULBuIm5h7Mwq.pdf\"]', 34.74, 'Observado', 'aprobado', '2026-09-27 23:06:24', '2026-09-27 23:09:25'),
+(11, 1, 5000.00, 10, 1000.00, 200.00, 2, '1 a 3 años', '[\"documentos\\/dni\\/Ee35ITSj3pCLYwvJnigbO6gpgoBSOxqIv66jhNL8.png\"]', '[\"documentos\\/boletas\\/RyU2YoZ2BSbDAe8U5fyRe4wO1aoLG6NTGXlBBLps.pdf\"]', 74.00, 'Rechazado', 'rechazado', '2026-09-27 23:19:10', '2026-09-27 23:19:10'),
+(12, 3, 8000.00, 18, 2500.00, 500.00, 1, '1 a 3 años', '[\"documentos\\/dni\\/hziNZw4UJktRHR2wb5aOND1rXmWd3httasVW6BCI.png\"]', '[\"documentos\\/boletas\\/OcVpYiFBp6MGwejskeanjxfANau0yoWbkA04yrYD.png\"]', 40.28, 'Rechazado', 'rechazado', '2026-10-08 19:44:39', '2026-10-08 19:44:39'),
+(13, 3, 8000.00, 18, 2500.00, 500.00, 1, '1 a 3 años', '[\"documentos\\/dni\\/GEqUdEk4aCTkxNE4VkwIlDRvVFqjVEjrh7ENo64k.png\"]', '[\"documentos\\/boletas\\/UYXYytln7wRuZSEozVNY8RZ7zl5NRtplMms2eWrD.png\"]', 40.28, 'Rechazado', 'rechazado', '2026-10-09 20:28:24', '2026-10-09 20:28:24');
 
 -- --------------------------------------------------------
 
@@ -208,7 +221,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Zasmi', 'zasmi@test.com', 'analista', NULL, '$2y$12$itorVHxeE5kFIKiRWwPUc.IW97T5W1aTYH0iiedlNwGmxsI6tBSMW', 'ufguUpRTLy8Y8p16R9zE8689SXhJEkcwdNRmPQ1z8oC5KQyKoZI1zieJUm7C', '2026-09-27 06:28:31', '2026-09-27 07:13:09');
+(1, 'Zasmi', 'zasmi@test.com', 'analista', NULL, '$2y$12$TLq57Re9.Xyo.wnid4rkGOtp6Tmpf9N5eg0BFaGG41bu8pWOM5r2u', 'UDEXpJdg9qZk70d24KsPH0gAqqp9Y1p4ltGUqMK67Ti6i3rbWzn5KSXvfLdn', '2026-09-27 21:48:58', '2026-09-27 21:49:49'),
+(2, 'Paquito', 'paquin@boti.com', 'socio', NULL, '$2y$12$MeMKhAJ0jz.Fuq9HxQz42.YSY/dW24jmrj5U4QgFwCvfQyf6ffKr.', NULL, '2026-09-27 23:37:58', '2026-09-27 23:37:58'),
+(3, 'Jhean Carlos', 'jhean@test.com', 'analista', NULL, '$2y$12$GKLzwkEtoO241CPlI9rqy.lEGCqp.27S5k1PPpc3ntni1zrONMGCK', 'Z3rTvuaDmjXU2ScdpSsBSFIImhL1h6XxNMpvm9e7NYFYr2Ce1fCcFz05B4NX', '2026-10-08 19:30:20', '2026-10-08 19:31:39'),
+(4, 'Usuario Prueba', 'prueba@test.com', 'socio', NULL, '$2y$12$BLrjmsreVJn44DVih/ZPDODpgxCByzvDY5YZ1f6nGhE9dC1laKm1a', NULL, '2026-10-09 20:24:16', '2026-10-09 20:24:16');
 
 --
 -- Índices para tablas volcadas
@@ -302,19 +318,19 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
