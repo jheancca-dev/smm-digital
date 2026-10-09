@@ -1,4 +1,4 @@
-# SMM Digital - Cooperativa Santa María Magdalena
+# SMM Digital
 
 Plataforma Web de Preevaluación Crediticia y Gestión de Solicitudes.
 
@@ -27,7 +27,7 @@ Coloca la carpeta `smm-digital` en `C:\xampp\htdocs\`
 Abre XAMPP Control Panel y activa **Apache** y **MySQL**.
 
 ### 3. Crear la base de datos
-Abre `http://localhost/phpmyadmin` y crea una BD llamada `smm_digital` con cotejamiento `utf8mb4_unicode_ci`.
+Abre `http://localhost/phpmyadmin` y crea una BD llamada `smm_digital_v2` con cotejamiento `utf8mb4_unicode_ci`.
 
 ### 4. Importar la base de datos
 En phpMyAdmin, selecciona `smm_digital` → pestaña **Importar** → sube el archivo `smm_digital.sql` incluido en la raíz del proyecto.
@@ -48,7 +48,7 @@ Verifica que el archivo `.env` tenga:
 DB_CONNECTION=mariadb
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=smm_digital
+DB_DATABASE=smm_digital_v2
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -91,7 +91,9 @@ Abrir en el navegador: **http://127.0.0.1:8000**
 
 | Rol | Email | Contraseña |
 |-----|-------|------------|
+| Analista | jhean@test.com | 12345678 |
 | Analista | zasmi@test.com | 12345678 |
+| Socio | prueba@test.com | 12345678 |
 
 ---
 
